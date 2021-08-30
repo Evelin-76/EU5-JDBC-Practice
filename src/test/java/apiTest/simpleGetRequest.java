@@ -29,7 +29,7 @@ public class simpleGetRequest {
     and body is json format
      */
     @Test
-    public void test2(){
+    public void test2(){//WITH TestNG
         Response response = RestAssured.given().accept(ContentType.JSON)
                 .when().get(hrUrl);
 
@@ -40,4 +40,16 @@ public class simpleGetRequest {
         Assert.assertEquals(response.contentType(),"application/json");
 
     }
+
+    @Test
+    public void test3(){//WITH RestAssured
+        RestAssured.given().accept((ContentType.JSON))
+                .when().get(hrUrl).then()
+                .assertThat().statusCode(200)
+                .and().contentType("application/json");
+
+
+
+    }
+
 }
