@@ -24,7 +24,7 @@ public class simpleGetRequest {
 
     /*test2:
     Given accept type is json
-    When user send get request to regions endpoint
+    When user send get request to regions
     Then response status code must be 200
     and body is json format
      */
@@ -48,8 +48,28 @@ public class simpleGetRequest {
                 .assertThat().statusCode(200)
                 .and().contentType("application/json");
 
-
-
     }
 
+    /*test4 TASK:
+    Given accept type is json
+    When user send get request to regions/2
+    Then response status code must be 200
+    and body is json format
+    and response body contains Americas
+     */
+
+    @Test
+    public void test5(){//with TestNG assertions
+     Response response = RestAssured.given().accept(ContentType.JSON)
+                .when().get(hrUrl + "/2");
+
+     //verify status
+        Assert.assertEquals(response.getStatusCode(),200);
+
+        //verify content type
+        Assert.assertEquals(response.contentType(),"application/json");
+
+        //verify body contains Americas
+        response.body().asString().contains("Americas");
+    }
 }
