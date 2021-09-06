@@ -6,11 +6,10 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utilities.ConfigurationReader;
-import java.util.ArrayList;
+
 import java.util.List;
+
 import static io.restassured.RestAssured.*;
-import static org.testng.Assert.*;
-import static io.restassured.RestAssured.baseURI;
 
 public class HrApiWithJsonPath {
 

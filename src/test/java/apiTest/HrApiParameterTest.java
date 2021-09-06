@@ -1,6 +1,5 @@
 package apiTest;
 
-import io.restassured.RestAssured.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -8,7 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utilities.ConfigurationReader;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
 
 public class HrApiParameterTest {
 
@@ -34,7 +34,7 @@ public class HrApiParameterTest {
     public void  test1(){
        response = given().accept(ContentType.JSON)
                 .and().queryParams("q","{\"region_id\":2}")
-                .when().get(baseURI + "/countries");
+                .when().get("/countries");
         Assert.assertEquals(response.statusCode(),200);
         Assert.assertEquals(response.contentType(),"application/json");
         Assert.assertTrue(response.body().asString().contains("United States of America"));
